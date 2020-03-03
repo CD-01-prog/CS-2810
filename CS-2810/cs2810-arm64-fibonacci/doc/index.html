@@ -1,0 +1,21 @@
+<html><head></head><body><h1>Fibonacci numbers</h1>
+
+<p>Write an assembly language function to compute numbers in the
+Fibonacci sequence. The function will take a single parameter and
+return a singe result. You should write your code to closely mimic
+the following C function:</p>
+
+<pre><code class="language-c">int fibonacci(int n) {
+    int a = 1;
+    int b = 1;
+
+    for (int i = 2; i &lt; n; i++) {
+        int temp = a + b;
+        a = b;
+        b = temp;
+    }
+
+    return b;
+}
+</code></pre>
+</body></html>

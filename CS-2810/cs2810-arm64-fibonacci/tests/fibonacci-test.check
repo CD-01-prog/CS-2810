@@ -1,0 +1,53 @@
+#include <inttypes.h>
+
+extern int64_t fibonacci(int64_t);
+extern int64_t callfunction(int64_t);
+extern int64_t (*target_function)(int64_t);
+extern int64_t unsaved_register_number;
+
+#suite alltests
+#tcase simple
+
+#test alltests
+    ck_assert_int_eq(callfunction(1), 1);
+    ck_assert_int_eq(unsaved_register_number, 0);
+
+    ck_assert_int_eq(callfunction(2), 1);
+    ck_assert_int_eq(unsaved_register_number, 0);
+
+    ck_assert_int_eq(callfunction(3), 2);
+    ck_assert_int_eq(unsaved_register_number, 0);
+
+    ck_assert_int_eq(callfunction(4), 3);
+    ck_assert_int_eq(unsaved_register_number, 0);
+
+    ck_assert_int_eq(callfunction(5), 5);
+    ck_assert_int_eq(unsaved_register_number, 0);
+
+    ck_assert_int_eq(callfunction(6), 8);
+    ck_assert_int_eq(unsaved_register_number, 0);
+
+    ck_assert_int_eq(callfunction(7), 13);
+    ck_assert_int_eq(unsaved_register_number, 0);
+
+    ck_assert_int_eq(callfunction(8), 21);
+    ck_assert_int_eq(unsaved_register_number, 0);
+
+    ck_assert_int_eq(callfunction(9), 34);
+    ck_assert_int_eq(unsaved_register_number, 0);
+
+    ck_assert_int_eq(callfunction(10), 55);
+    ck_assert_int_eq(unsaved_register_number, 0);
+
+    ck_assert_int_eq(callfunction(20), 6765);
+    ck_assert_int_eq(unsaved_register_number, 0);
+
+    ck_assert_int_eq(callfunction(30), 832040);
+    ck_assert_int_eq(unsaved_register_number, 0);
+
+    ck_assert_int_eq(callfunction(40), 102334155);
+    ck_assert_int_eq(unsaved_register_number, 0);
+
+#main-pre
+    srunner_set_xml(sr, "test_detail.xml");
+    target_function = fibonacci;

@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+<?xml-stylesheet type="text/xsl" href="http://check.sourceforge.net/xml/check_unittest.xslt"?>
+<testsuites xmlns="http://check.sourceforge.net/ns">
+  <datetime>2019-11-19 11:25:07</datetime>
+  <suite>
+    <title>alltests</title>
+    <test result="success">
+      <path>tests</path>
+      <fn>read_board.check:63</fn>
+      <id>valid</id>
+      <iteration>0</iteration>
+      <duration>0.000176</duration>
+      <description>simple</description>
+      <message>Passed</message>
+    </test>
+    <test result="success">
+      <path>tests</path>
+      <fn>read_board.check:92</fn>
+      <id>inputtooshort</id>
+      <iteration>0</iteration>
+      <duration>0.000133</duration>
+      <description>simple</description>
+      <message>Passed</message>
+    </test>
+    <test result="success">
+      <path>tests</path>
+      <fn>read_board.check:123</fn>
+      <id>inputtoolong</id>
+      <iteration>0</iteration>
+      <duration>0.000132</duration>
+      <description>simple</description>
+      <message>Passed</message>
+    </test>
+    <test result="success">
+      <path>tests</path>
+      <fn>read_board.check:167</fn>
+      <id>invalidcharacters</id>
+      <iteration>0</iteration>
+      <duration>0.000165</duration>
+      <description>simple</description>
+      <message>Passed</message>
+    </test>
+  </suite>
+  <duration>0.040715</duration>
+</testsuites>

@@ -1,0 +1,73 @@
+<html><head></head><body><p>Write a function to print a formatted Sudoku board:</p>
+
+<pre><code>print_board(board) -&gt; 0 for success, &gt;0 for failure
+</code></pre>
+
+<p>The output should be printed to stdout and should look like:</p>
+
+<pre><code>+-------+-------+-------+
+| 8 1 9 | 7 6 3 | 4 2 5 |
+| 4 7 5 | 9 2   | 6 1 3 |
+| 3 2 6 | 5 4 1 | 9 7 8 |
++-------+-------+-------+
+| 5 4 2 | 8 9 7 | 1 3 6 |
+| 6 8 7 | 1 3 4 | 5 9 2 |
+| 9   1 | 6 5 2 | 8 4 7 |
++-------+-------+-------+
+| 1 9 8 | 2 7 5 | 3 6 4 |
+| 2 5 4 | 3 1 6 | 7 8 9 |
+| 7 6 3 | 4 8 9 | 2 5 1 |
++-------+-------+-------+
+</code></pre>
+
+<p>(your output should not be indented)</p>
+
+<p>You may find it helpful to write this in another language before
+starting it in assembly language.</p>
+
+<p>A couple of notes:</p>
+
+<ul>
+<li><p>There are really two kinds of lines here. One of them is just a
+constant string that you just need to print. This might be a
+good place to start: have your function print the first line
+(including the newline at the end) and nothing else.</p></li>
+
+<li><p>The lines with numbers all follow the same format. One approach
+is to create a string in the data segment with the correct
+spacing and formatting, then have your function put the correct
+digits (and blanks) in place before printing the string. Then
+you could re-use the template for the next line, etc.</p></li>
+</ul>
+
+<p>To create a string in the data segment, you can use:</p>
+
+<pre><code>                .data
+.template:      .ascii  &#34;| 1 2 3 | 4 5 6 | 7 8 9 |\n&#34;
+                .equ    .template_size, .-template
+</code></pre>
+
+<p>This will create two labels: <code>.template</code> will be the address of the
+string, and <code>.template_size</code> will be the length of the string.</p>
+
+<p>When you create a data segment with strings, it is likely that you
+will end up with a segment whose length is not a multiple of 8. To
+prevent resulting alignment issues, you can end the segment with:</p>
+
+<pre><code>                .balign 8
+</code></pre>
+
+<p>This instructs the assembler to add extra junk bytes if necessary
+to pad the segment out to a multiple of 8.</p>
+
+<p>To test this code, just run &#34;make&#34;, which will run your code and
+compare its output to the expected output. If it finds a line that
+mismatches, it will show you what it saw and what it expected so you
+can correct your code.</p>
+
+<p>Note that the output should be the exact board displayed above
+(based on the board defined in <code>start.s</code>). If you modify <code>start.s</code>,
+you will need to restore it to its original state to ensure that the
+output is correct. You can always delete it and run &#34;grind save&#34; to
+re-load the original version.</p>
+</body></html>
